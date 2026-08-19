@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <style>
   * { box-sizing: border-box; }
-
+ 
   body {
     margin: 0;
     background-color: #FFE4E8;
@@ -25,7 +25,7 @@
       radial-gradient(circle at 50% 50%, #fff0f3 0%, transparent 60%);
     position: relative;
   }
-
+ 
   .hearts-bg {
     position: fixed;
     inset: 0;
@@ -45,7 +45,7 @@
     10% { opacity: 0.8; }
     100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
   }
-
+ 
   .container {
     position: relative;
     z-index: 2;
@@ -69,7 +69,7 @@
     transition: opacity 0.5s ease, transform 0.5s ease;
     pointer-events: none;
   }
-
+ 
   h1 {
     font-size: 1.7rem;
     font-weight: 900;
@@ -82,7 +82,7 @@
     font-size: 0.95rem;
     margin-bottom: 14px;
   }
-
+ 
   .scene {
     position: relative;
     height: 160px;
@@ -119,7 +119,7 @@
     0%, 100% { transform: translateX(-50%) scale(1) rotate(0deg); }
     50% { transform: translateX(-50%) scale(1.25) rotate(15deg); }
   }
-
+ 
   .funny-line {
     font-size: 0.85rem;
     font-weight: 700;
@@ -127,7 +127,7 @@
     margin: 4px 0 16px;
     min-height: 18px;
   }
-
+ 
   .buttons {
     display: flex;
     gap: 14px;
@@ -165,7 +165,7 @@
     60% { transform: translateX(-6px) scale(1.03); }
     80% { transform: translateX(6px) scale(1.03); }
   }
-
+ 
   #noBtn {
     transform: translateY(-45px);
     background: #fff;
@@ -178,13 +178,13 @@
     z-index: 5;
     white-space: nowrap;
   }
-
+ 
   .yes-size-1 { font-size: 1.05rem; padding: 12px 26px; }
   .yes-size-2 { font-size: 1.25rem; padding: 15px 32px; }
   .yes-size-3 { font-size: 1.5rem; padding: 18px 40px; }
   .yes-size-4 { font-size: 1.85rem; padding: 22px 50px; }
   .yes-size-5 { font-size: 2rem; padding: 20px 34px; }
-
+ 
   .nudge-msg {
     font-size: 0.85rem;
     color: #ff6f91;
@@ -195,7 +195,7 @@
     transition: opacity 0.3s ease;
   }
   .nudge-msg.show { opacity: 1; }
-
+ 
   .tap-hint {
     font-size: 0.75rem;
     font-weight: 700;
@@ -203,7 +203,7 @@
     margin-top: 14px;
     opacity: 0.8;
   }
-
+ 
   /* ---------- YES PAGE (matches original structure) ---------- */
   .yes-container {
     display: none;
@@ -242,7 +242,7 @@
     color: #c98da2;
     margin-top: 16px;
   }
-
+ 
   #music-toggle {
     position: fixed;
     bottom: 20px;
@@ -283,29 +283,29 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="hearts-bg" id="heartsBg"></div>
-
+ 
 <div class="container" id="mainCard">
   <div class="scene">
     <span class="ring-emoji">💍</span>
     <span class="bear groom">🐻</span>
     <span class="bear bride">🐻‍❄️</span>
   </div>
-
+ 
   <h1>Will you marry me?</h1>
   <div class="sub">(the bears already said yes to each other, you're just next 🐾)</div>
   <div class="funny-line" id="funnyLine">Warning: saying yes means unlimited hugs, forever.</div>
-
+ 
   <div class="buttons">
     <button id="yesBtn" class="yes-size-1 locked" onclick="tryYes()">Yes 💍</button>
     <button id="noBtn" onclick="dodge()" onmouseover="dodge()" ontouchstart="dodgeTouch(event)">No</button>
   </div>
-
+ 
   <div class="nudge-msg" id="nudgeMsg"></div>
   <div class="tap-hint" id="tapHint">psst... try tapping No first 👀</div>
 </div>
-
+ 
 <div class="container yes-container" id="yesContainer">
   <h1 class="yes-title">Knew you'd say yes! 🎉</h1>
   <div class="gif-container">
@@ -314,12 +314,12 @@
   <p class="yes-message">I love you 💘<br>You just made me the happiest person alive.</p>
   <div class="small-note">forever + always + matching pajamas 🐾</div>
 </div>
-
+ 
 <audio id="bg-music" loop preload="auto">
   <source src="music/beabadoobee - Glue Song (Lyrics).mp3" type="audio/mpeg">
 </audio>
 <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">🔊</button>
-
+ 
 <script>
   // floating hearts background
   const heartsEmojis = ['💗','💖','💕','💞','🩷','💍','✨'];
@@ -336,7 +336,7 @@
   }
   setInterval(spawnHeart, 450);
   for (let i = 0; i < 10; i++) setTimeout(spawnHeart, i * 150);
-
+ 
   // funny rotating lines
   const funnyLines = [
     "Warning: saying yes means unlimited hugs, forever.",
@@ -357,7 +357,7 @@
       el.style.opacity = 1;
     }, 350);
   }, 3200);
-
+ 
   // No button dodges far + Yes button locked until excuses run out
   const noBtn = document.getElementById('noBtn');
   const yesBtn = document.getElementById('yesBtn');
@@ -373,7 +373,7 @@
     "so close, don't give up on No yet",
     "one more No tap and I'm all yours"
   ];
-
+ 
   function moveNoFarAway() {
     // Keep the No button inside the buttons area.
     // This prevents it from leaving the frame or blocking other page content.
@@ -381,40 +381,40 @@
     const zoneRect = zone.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
     const yesRect = yesBtn.getBoundingClientRect();
-
+ 
     const padding = 6;
     const halfW = btnRect.width / 2;
     const halfH = btnRect.height / 2;
-
+ 
     const minX = halfW + padding;
     const maxX = zoneRect.width - halfW - padding;
     const minY = halfH + padding;
     const maxY = zoneRect.height - halfH - padding;
-
+ 
     if (maxX <= minX || maxY <= minY) return;
-
+ 
     const yesCenterX = yesRect.left - zoneRect.left + yesRect.width / 2;
     const yesCenterY = yesRect.top - zoneRect.top + yesRect.height / 2;
-
+ 
     let x, y, dist;
     let attempts = 0;
     const minDistance = Math.min(zoneRect.width, zoneRect.height) * 0.30;
-
+ 
     do {
       x = minX + Math.random() * (maxX - minX);
       y = minY + Math.random() * (maxY - minY);
-
+ 
       const dx = x - yesCenterX;
       const dy = y - yesCenterY;
       dist = Math.sqrt(dx * dx + dy * dy);
       attempts++;
     } while (dist < minDistance && attempts < 30);
-
+ 
     noBtn.style.left = x + 'px';
     noBtn.style.top = y + 'px';
     noBtn.style.transform = 'translate(-50%, -50%)';
   }
-
+ 
   function tryYes() {
     if (yesUnlocked) { sayYes(); return; }
     yesBtn.classList.add('shake');
@@ -424,20 +424,20 @@
     nudgeMsg.classList.add('show');
     setTimeout(() => nudgeMsg.classList.remove('show'), 1800);
   }
-
+ 
   function dodge() {
     dodgeCount++;
     moveNoFarAway();
     noBtn.textContent = noExcuses[Math.min(dodgeCount, noExcuses.length - 1)];
     const growLevel = Math.min(dodgeCount, 5);
     yesBtn.className = 'yes-size-' + (growLevel === 0 ? 1 : growLevel) + (yesUnlocked ? '' : ' locked');
-
+ 
     if (dodgeCount >= noExcuses.length - 1 && !yesUnlocked) {
       // Final No button: place it above the bear image / scene.
       const scene = document.querySelector('.scene');
       const sceneRect = scene.getBoundingClientRect();
       const btnRect = noBtn.getBoundingClientRect();
-
+ 
       noBtn.style.left = Math.max(
         10,
         Math.min(
@@ -445,12 +445,12 @@
           sceneRect.left + (sceneRect.width - btnRect.width) / 2
         )
       ) + 'px';
-
+ 
       noBtn.style.top = Math.max(
         10,
         sceneRect.top - btnRect.height - 12
       ) + 'px';
-
+ 
       yesUnlocked = true;
       yesBtn.classList.remove('locked');
       document.getElementById('tapHint').textContent = "okay okay, the Yes button is all yours now 💍";
@@ -462,20 +462,20 @@
     }
   }
   function dodgeTouch(e) { e.preventDefault(); dodge(); }
-
+ 
   function sayYes() {
     // Start music immediately, synchronously, inside the click handler.
     // If this is deferred (e.g. inside a setTimeout), browsers like Safari/iOS
     // no longer treat play() as tied to a user gesture and silently block it.
     playMusic();
-
+ 
     fireConfetti();
-
+ 
     const mainCard = document.getElementById('mainCard');
     mainCard.classList.add('fading-out');
     noBtn.style.transition = 'opacity 0.4s ease';
     noBtn.style.opacity = '0';
-
+ 
     setTimeout(() => {
       mainCard.style.display = 'none';
       noBtn.style.display = 'none';
@@ -483,7 +483,7 @@
       fireConfetti();
     }, 550);
   }
-
+ 
   function fireConfetti() {
     if (typeof confetti === 'function') {
       confetti({
@@ -506,12 +506,12 @@
       }), 250);
     }
   }
-
+ 
   // background music
   const bgMusic = document.getElementById('bg-music');
   const musicToggle = document.getElementById('music-toggle');
   let musicPlaying = false;
-
+ 
   function playMusic() {
     bgMusic.volume = 1;
     bgMusic.currentTime = 0;
@@ -529,7 +529,7 @@
       });
     }
   }
-
+ 
   function toggleMusic() {
     if (musicPlaying) {
       bgMusic.pause();
@@ -545,6 +545,6 @@
     }
   }
 </script>
-
+ 
 </body>
 </html>
